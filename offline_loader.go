@@ -2,6 +2,7 @@ package tiktoken_loader
 
 import (
 	"encoding/base64"
+	"path"
 	"strconv"
 	"strings"
 
@@ -11,7 +12,8 @@ import (
 type OfflineLoader struct{}
 
 func (l *OfflineLoader) LoadTiktokenBpe(tiktokenBpeFile string) (map[string]int, error) {
-	contents, err := assets.Assets.ReadFile(tiktokenBpeFile)
+	baseFileName := path.Base(tiktokenBpeFile)
+	contents, err := assets.Assets.ReadFile(baseFileName)
 	if err != nil {
 		return nil, err
 	}
