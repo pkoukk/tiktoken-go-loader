@@ -1,0 +1,27 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/pkoukk/tiktoken-go-loader
+cpu: Apple M3 Max
+                                        │ bench-before.txt │           bench-after.txt           │
+                                        │      sec/op      │    sec/op     vs base               │
+LoadTiktokenBpe/cl100k_base.tiktoken-16       13.46m ± 12%   10.80m ±  4%  -19.78% (p=0.002 n=6)
+LoadTiktokenBpe/o200k_base.tiktoken-16        28.84m ±  4%   22.99m ±  9%  -20.27% (p=0.002 n=6)
+LoadTiktokenBpe/p50k_base.tiktoken-16         6.873m ±  1%   5.077m ±  3%  -26.14% (p=0.002 n=6)
+LoadTiktokenBpe/r50k_base.tiktoken-16         7.016m ±  3%   5.095m ± 10%  -27.38% (p=0.002 n=6)
+geomean                                       11.70m         8.952m        -23.47%
+
+                                        │ bench-before.txt │           bench-after.txt           │
+                                        │       B/op       │     B/op      vs base               │
+LoadTiktokenBpe/cl100k_base.tiktoken-16      16.157Mi ± 0%   7.441Mi ± 0%  -53.95% (p=0.002 n=6)
+LoadTiktokenBpe/o200k_base.tiktoken-16        33.01Mi ± 0%   14.99Mi ± 0%  -54.58% (p=0.002 n=6)
+LoadTiktokenBpe/p50k_base.tiktoken-16         8.096Mi ± 0%   3.717Mi ± 0%  -54.09% (p=0.002 n=6)
+LoadTiktokenBpe/r50k_base.tiktoken-16         8.079Mi ± 0%   3.716Mi ± 0%  -54.00% (p=0.002 n=6)
+geomean                                       13.67Mi        6.265Mi       -54.16%
+
+                                        │ bench-before.txt │          bench-after.txt           │
+                                        │    allocs/op     │  allocs/op   vs base               │
+LoadTiktokenBpe/cl100k_base.tiktoken-16        301.0k ± 0%   100.8k ± 0%  -66.53% (p=0.002 n=6)
+LoadTiktokenBpe/o200k_base.tiktoken-16         600.8k ± 0%   201.1k ± 0%  -66.52% (p=0.002 n=6)
+LoadTiktokenBpe/p50k_base.tiktoken-16         150.86k ± 0%   50.33k ± 0%  -66.64% (p=0.002 n=6)
+LoadTiktokenBpe/r50k_base.tiktoken-16         150.79k ± 0%   50.30k ± 0%  -66.64% (p=0.002 n=6)
+geomean                                        253.3k        84.63k       -66.58%

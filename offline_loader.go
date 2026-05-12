@@ -1,10 +1,12 @@
 package tiktoken_loader
 
 import (
+	"bufio"
+	"bytes"
 	"encoding/base64"
+	"fmt"
 	"path"
 	"strconv"
-	"strings"
 
 	"github.com/pkoukk/tiktoken-go-loader/assets"
 )
@@ -12,27 +14,38 @@ import (
 type OfflineLoader struct{}
 
 func (l *OfflineLoader) LoadTiktokenBpe(tiktokenBpeFile string) (map[string]int, error) {
-	baseFileName := path.Base(tiktokenBpeFile)
-	contents, err := assets.Assets.ReadFile(baseFileName)
+	name := path.Base(tiktokenBpeFile)
+	f, err := assets.Assets.Open(name)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to open file %q: %w", name, err)
 	}
+	defer f.Close()
 
 	bpeRanks := make(map[string]int)
-	for _, line := range strings.Split(string(contents), "\n") {
-		if line == "" {
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := scanner.Bytes()
+		if len(line) == 0 {
 			continue
 		}
-		parts := strings.Split(line, " ")
-		token, err := base64.StdEncoding.DecodeString(parts[0])
-		if err != nil {
-			return nil, err
+		tokenStr, rankStr, ok := bytes.Cut(line, []byte(" "))
+		if !ok {
+			return nil, fmt.Errorf("invalid line in asset %q: %q", name, line)
 		}
-		rank, err := strconv.Atoi(parts[1])
+		token := make([]byte, base64.StdEncoding.DecodedLen(len(tokenStr)))
+		n, err := base64.StdEncoding.Decode(token, tokenStr)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("decoding token from asset: %w", err)
+		}
+		token = token[:n]
+		rank, err := strconv.Atoi(string(rankStr))
+		if err != nil {
+			return nil, fmt.Errorf("parsing rank from asset: %w", err)
 		}
 		bpeRanks[string(token)] = rank
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, fmt.Errorf("reading asset %q: %w", name, err)
 	}
 	return bpeRanks, nil
 }

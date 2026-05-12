@@ -1,0 +1,30 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/pkoukk/tiktoken-go-loader
+cpu: Apple M3 Max
+BenchmarkLoadTiktokenBpe/cl100k_base.tiktoken-16         	     109	  10391229 ns/op	 7803414 B/op	  100762 allocs/op
+BenchmarkLoadTiktokenBpe/cl100k_base.tiktoken-16         	     100	  10623661 ns/op	 7801898 B/op	  100762 allocs/op
+BenchmarkLoadTiktokenBpe/cl100k_base.tiktoken-16         	     100	  10503553 ns/op	 7801847 B/op	  100762 allocs/op
+BenchmarkLoadTiktokenBpe/cl100k_base.tiktoken-16         	     100	  10973996 ns/op	 7801857 B/op	  100762 allocs/op
+BenchmarkLoadTiktokenBpe/cl100k_base.tiktoken-16         	     100	  11043474 ns/op	 7802412 B/op	  100762 allocs/op
+BenchmarkLoadTiktokenBpe/cl100k_base.tiktoken-16         	     100	  11071310 ns/op	 7802428 B/op	  100762 allocs/op
+BenchmarkLoadTiktokenBpe/o200k_base.tiktoken-16          	      44	  23418590 ns/op	15719911 B/op	  201127 allocs/op
+BenchmarkLoadTiktokenBpe/o200k_base.tiktoken-16          	      50	  22565700 ns/op	15721096 B/op	  201127 allocs/op
+BenchmarkLoadTiktokenBpe/o200k_base.tiktoken-16          	      52	  21254126 ns/op	15719904 B/op	  201127 allocs/op
+BenchmarkLoadTiktokenBpe/o200k_base.tiktoken-16          	      52	  21555412 ns/op	15721041 B/op	  201127 allocs/op
+BenchmarkLoadTiktokenBpe/o200k_base.tiktoken-16          	      52	  24232250 ns/op	15719920 B/op	  201127 allocs/op
+BenchmarkLoadTiktokenBpe/o200k_base.tiktoken-16          	      45	  24977678 ns/op	15719905 B/op	  201127 allocs/op
+BenchmarkLoadTiktokenBpe/p50k_base.tiktoken-16           	     232	   5041857 ns/op	 3897330 B/op	   50326 allocs/op
+BenchmarkLoadTiktokenBpe/p50k_base.tiktoken-16           	     226	   5033030 ns/op	 3897341 B/op	   50326 allocs/op
+BenchmarkLoadTiktokenBpe/p50k_base.tiktoken-16           	     240	   5154618 ns/op	 3897317 B/op	   50326 allocs/op
+BenchmarkLoadTiktokenBpe/p50k_base.tiktoken-16           	     224	   5238225 ns/op	 3897835 B/op	   50326 allocs/op
+BenchmarkLoadTiktokenBpe/p50k_base.tiktoken-16           	     230	   5111859 ns/op	 3897090 B/op	   50326 allocs/op
+BenchmarkLoadTiktokenBpe/p50k_base.tiktoken-16           	     235	   4987005 ns/op	 3897087 B/op	   50326 allocs/op
+BenchmarkLoadTiktokenBpe/r50k_base.tiktoken-16           	     240	   4975522 ns/op	 3896924 B/op	   50302 allocs/op
+BenchmarkLoadTiktokenBpe/r50k_base.tiktoken-16           	     240	   5143763 ns/op	 3896686 B/op	   50302 allocs/op
+BenchmarkLoadTiktokenBpe/r50k_base.tiktoken-16           	     228	   5213780 ns/op	 3896686 B/op	   50302 allocs/op
+BenchmarkLoadTiktokenBpe/r50k_base.tiktoken-16           	     224	   5588056 ns/op	 3897181 B/op	   50302 allocs/op
+BenchmarkLoadTiktokenBpe/r50k_base.tiktoken-16           	     217	   5046844 ns/op	 3896684 B/op	   50302 allocs/op
+BenchmarkLoadTiktokenBpe/r50k_base.tiktoken-16           	     241	   4985427 ns/op	 3896687 B/op	   50302 allocs/op
+PASS
+ok  	github.com/pkoukk/tiktoken-go-loader	36.325s
